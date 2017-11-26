@@ -9,8 +9,10 @@ int main()
     //      0  1  2
     //      \  |  /
     //         3
-    //      /  |  \
-    //      4  5  6
+    //      /  |  \  \  \  \
+    //      4  5  6  7  8  9
+    //      \  |  /  /  /  /
+    //        10
 
     std::mutex coutMutex;
 
@@ -29,10 +31,16 @@ int main()
     std::vector<std::size_t> waitListForId3 = { id0, id1, id2 };
     auto id3 = threadPool.addJob(waitListForId3, func, 3);
 
-    std::vector<std::size_t> waitListForId456 = { id3 };
-    auto id4 = threadPool.addJob(waitListForId456, func, 4);
-    auto id5 = threadPool.addJob(waitListForId456, func, 5);
-    auto id6 = threadPool.addJob(waitListForId456, func, 6);
+    std::vector<std::size_t> waitListForId456789 = { id3 };
+    auto id4 = threadPool.addJob(waitListForId456789, func, 4);
+    auto id5 = threadPool.addJob(waitListForId456789, func, 5);
+    auto id6 = threadPool.addJob(waitListForId456789, func, 6);
+    auto id7 = threadPool.addJob(waitListForId456789, func, 7);
+    auto id8 = threadPool.addJob(waitListForId456789, func, 8);
+    auto id9 = threadPool.addJob(waitListForId456789, func, 9);
+    
+    std::vector<std::size_t> waitListForId10 = { id4, id5, id6, id7, id8, id9 };
+    threadPool.addJob(waitListForId10, func, 10);
 
     threadPool.waitAll();
     std::cout << "That's all, folks!\nPress any key...";
