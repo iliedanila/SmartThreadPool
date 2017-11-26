@@ -6,6 +6,8 @@
 #include <atomic>
 #include <future>
 #include <queue>
+#include <memory>
+#include <unordered_map>
 
 #include "Job.h"
 
@@ -23,10 +25,12 @@ public:
 
 private:
     friend class Worker;
-    std::vector<std::thread> threads;
+    void processJobFinished(std::size_t jobID);
     
-    std::queue<Job> jobs;
-    std::vector<std::size_t> finishedJobs;
+    std::vector<std::thread> threads;
+    std::queue<std::shared_ptr<Job>> availableJobs;
+    
+    std::unordered_map<std::size_t, std::shared_ptr<Job>> jobs;
     std::mutex jobsMutex;
 
     std::atomic<bool> stop;
@@ -42,8 +46,16 @@ template <typename Func, typename... Args>
 size_t ThreadPool::addJob(const std::vector<size_t> runAfterIDs, Func&& func, Args&&... args)
 {
     std::unique_lock<std::mutex> lock(jobsMutex);
-    jobs.emplace(Job(std::async(std::launch::deferred, func, std::forward<Args>(args)...), runAfterIDs, jobs.size()));
-    return jobs.size() - 1;
+    
+    auto currentID = jobs.size();
+    auto job = std::make_shared<Job>(
+        std::async(std::launch::deferred, func, std::forward<Args>(args)...),
+        runAfterIDs,
+        currentID);
+    
+    jobs.insert(std::make_pair(currentID, job));
+    
+    //TODO: should it be in the available queue?
 }
 
 #endif

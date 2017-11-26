@@ -10,6 +10,7 @@
 		4B06804F1FC9AE31001D3A06 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B06804C1FC9AE30001D3A06 /* main.cpp */; };
 		4B0680501FC9AE31001D3A06 /* ThreadPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B06804D1FC9AE31001D3A06 /* ThreadPool.cpp */; };
 		4B0680511FC9AE31001D3A06 /* Worker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B06804E1FC9AE31001D3A06 /* Worker.cpp */; };
+		4BE26ADA1FCA9EBA00C3CB3F /* Job.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BE26AD91FCA9EBA00C3CB3F /* Job.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		4B06804C1FC9AE30001D3A06 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = SmartThreadPool/src/main.cpp; sourceTree = "<group>"; };
 		4B06804D1FC9AE31001D3A06 /* ThreadPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThreadPool.cpp; path = SmartThreadPool/src/ThreadPool.cpp; sourceTree = "<group>"; };
 		4B06804E1FC9AE31001D3A06 /* Worker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Worker.cpp; path = SmartThreadPool/src/Worker.cpp; sourceTree = "<group>"; };
+		4BE26AD91FCA9EBA00C3CB3F /* Job.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Job.cpp; path = SmartThreadPool/src/Job.cpp; sourceTree = "<group>"; };
 		4BE27AF81FC9AD63008ED269 /* ThreadPool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ThreadPool; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,6 +63,7 @@
 				4B06804C1FC9AE30001D3A06 /* main.cpp */,
 				4B06804D1FC9AE31001D3A06 /* ThreadPool.cpp */,
 				4B06804E1FC9AE31001D3A06 /* Worker.cpp */,
+				4BE26AD91FCA9EBA00C3CB3F /* Job.cpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 				4B06804F1FC9AE31001D3A06 /* main.cpp in Sources */,
 				4B0680501FC9AE31001D3A06 /* ThreadPool.cpp in Sources */,
 				4B0680511FC9AE31001D3A06 /* Worker.cpp in Sources */,
+				4BE26ADA1FCA9EBA00C3CB3F /* Job.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

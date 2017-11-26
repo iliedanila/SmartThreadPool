@@ -20,3 +20,18 @@ ThreadPool::~ThreadPool()
     }
 }
 
+void ThreadPool::processJobFinished(std::size_t jobID)
+{
+    std::unique_lock<std::mutex> lock(jobsMutex);
+    
+    auto job = jobs[jobID];
+    for (auto waitingJobID : job->getWaitingJobID())
+    {
+        jobs[waitingJobID]->increaseFinishedIDsCount();
+        
+        if (jobs[waitingJobID]->getFinishedIDsCount() == 0)
+        {
+            availableJobs.push(jobs[waitingJobID]);
+        }
+    }
+}
