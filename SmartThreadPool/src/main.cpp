@@ -5,37 +5,36 @@ using namespace std::chrono_literals;
 
 int main()
 {
+    // Jobs will run like this:
+    //      0  1  2
+    //      \  |  /
+    //         3
+    //      /  |  \
+    //      4  5  6
+
     std::mutex coutMutex;
 
     ThreadPool threadPool;
 
-    threadPool.addJob([&coutMutex](auto value1, auto value2)
+    auto func = [&coutMutex](int value)
     {
         std::unique_lock<std::mutex> lock(coutMutex);
-        std::cout << value1 << ' ' << value2 << '\n'; 
-    }, 7, 7);
-
-    auto func = [&coutMutex](auto value1, auto value2)
-    {
-        std::unique_lock<std::mutex> lock(coutMutex);
-        std::cout << value1 << ' ' << value2 << '\n';
+        std::cout << "My received value is: " << value << '\n';
     };
 
-    threadPool.addJob(func, 77, 777);
+    auto id0 = threadPool.addJob(func, 0);
+    auto id1 = threadPool.addJob(func, 1);
+    auto id2 = threadPool.addJob(func, 2);
 
-    auto add = [](auto value1, auto value2) -> decltype(value1 + value2)
-    {
-        return value1 + value2;
-    };
+    std::vector<std::size_t> waitListForId3 = { id0, id1, id2 };
+    auto id3 = threadPool.addJob(waitListForId3, func, 3);
 
-    int sum;
-    auto funcAdd = [&sum, add](auto value1, auto value2)
-    {
-        sum = add(value1, value2);
-    };
-    threadPool.addJob(funcAdd, 7, 770);
+    std::vector<std::size_t> waitListForId456 = { id3 };
+    auto id4 = threadPool.addJob(waitListForId456, func, 4);
+    auto id5 = threadPool.addJob(waitListForId456, func, 5);
+    auto id6 = threadPool.addJob(waitListForId456, func, 6);
 
-    std::this_thread::sleep_for(2s);
-    std::cout << sum << '\n';
-    std::this_thread::sleep_for(2s);
+    threadPool.waitAll();
+    std::cout << "That's all, folks!\nPress any key...";
+    std::cin.get();
 }

@@ -10,7 +10,7 @@ public:
     explicit Job(
         std::future<void> aFuture,
         std::vector<std::size_t> aRunAfterIDs,
-         const std::size_t anID);
+        const std::size_t anID);
 
     Job(const Job& other) = delete;
     Job& operator = (const Job& other) = delete;
@@ -22,10 +22,13 @@ public:
     void run();
     
     void addWaitingJobID(std::size_t jobID);
-    std::vector<std::size_t> getWaitingJobID() const;
+    std::vector<std::size_t> getWaitingJobIDs() const;
     
     void increaseFinishedIDsCount();
     std::size_t getFinishedIDsCount() const;
+
+    std::vector<std::size_t> getRunAfterIDs() const;
+    bool isReadyToRun() const;
 
 private:
     std::future<void> future;
