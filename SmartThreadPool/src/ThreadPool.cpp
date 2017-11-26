@@ -4,6 +4,9 @@
 #include <thread>
 
 ThreadPool::ThreadPool()
+:
+    addedJobsCount(0),
+    finishedJobsCount(0)
 {
     for (unsigned int index = 0; index < std::thread::hardware_concurrency(); index++)
     {
