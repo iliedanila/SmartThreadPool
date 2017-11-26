@@ -1,2 +1,2 @@
 # ThreadPool
-A modern C++ smart thread pool.
+A modern C++ `smart` thread pool.
