@@ -292,3 +292,5 @@ __pycache__/
 ThreadPool\.xcodeproj/project\.xcworkspace/xcuserdata/ilie\.xcuserdatad/UserInterfaceState\.xcuserstate
 
 *.xcbkptlist
+
+*.xcuserstate

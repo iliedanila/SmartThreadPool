@@ -1,5 +1,7 @@
 #include <iostream>
-#include "../inc/ThreadPool.h"
+#include <string_view>
+
+#include "../SmartThreadPool/inc/ThreadPool.h"
 
 using namespace std::chrono_literals;
 
@@ -24,6 +26,12 @@ int main()
         std::cout << "My received value is: " << value << '\n';
     };
 
+    auto anotherFunc = [&coutMutex](std::string_view stringView)
+    {
+        std::unique_lock<std::mutex> lock(coutMutex);
+        std::cout << "My received string is: " << stringView << '\n';
+    };
+
     auto id0 = threadPool.addJob(func, 0);
     auto id1 = threadPool.addJob(func, 1);
     auto id2 = threadPool.addJob(func, 2);
@@ -38,9 +46,9 @@ int main()
     auto id7 = threadPool.addJob(waitListForId456789, func, 7);
     auto id8 = threadPool.addJob(waitListForId456789, func, 8);
     auto id9 = threadPool.addJob(waitListForId456789, func, 9);
-    
+
     std::vector<std::size_t> waitListForId10 = { id4, id5, id6, id7, id8, id9 };
-    threadPool.addJob(waitListForId10, func, 10);
+    threadPool.addJob(waitListForId10, anotherFunc, "A test string");
 
     threadPool.waitAll();
     std::cout << "That's all, folks!\nPress any key...";
