@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B5D788D1FCCA45E002BAD56 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D788C1FCCA45E002BAD56 /* main.cpp */; };
 		4B5D788F1FCCA46A002BAD56 /* libSmartThreadPool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5D78901FCCA46A002BAD56 /* libSmartThreadPool.a */; };
+		4BDAD3A41FCCA769006ADB2D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAD3A31FCCA769006ADB2D /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,8 +25,8 @@
 
 /* Begin PBXFileReference section */
 		4B5D78821FCCA413002BAD56 /* ThreadTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ThreadTest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B5D788C1FCCA45E002BAD56 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		4B5D78901FCCA46A002BAD56 /* libSmartThreadPool.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSmartThreadPool.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BDAD3A31FCCA769006ADB2D /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +44,7 @@
 		4B5D78791FCCA413002BAD56 = {
 			isa = PBXGroup;
 			children = (
-				4B5D78841FCCA413002BAD56 /* ThreadTest */,
+				4BDAD3A21FCCA75A006ADB2D /* src */,
 				4B5D78831FCCA413002BAD56 /* Products */,
 				4B5D788E1FCCA46A002BAD56 /* Frameworks */,
 			);
@@ -58,20 +58,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4B5D78841FCCA413002BAD56 /* ThreadTest */ = {
-			isa = PBXGroup;
-			children = (
-				4B5D788C1FCCA45E002BAD56 /* main.cpp */,
-			);
-			path = ThreadTest;
-			sourceTree = "<group>";
-		};
 		4B5D788E1FCCA46A002BAD56 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				4B5D78901FCCA46A002BAD56 /* libSmartThreadPool.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4BDAD3A21FCCA75A006ADB2D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4BDAD3A31FCCA769006ADB2D /* main.cpp */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B5D788D1FCCA45E002BAD56 /* main.cpp in Sources */,
+				4BDAD3A41FCCA769006ADB2D /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
