@@ -294,3 +294,7 @@ ThreadPool\.xcodeproj/project\.xcworkspace/xcuserdata/ilie\.xcuserdatad/UserInte
 *.xcbkptlist
 
 *.xcuserstate
+
+.vscode/
+
+build/
